@@ -1,1 +1,2 @@
 # vericoin
+vericoin node

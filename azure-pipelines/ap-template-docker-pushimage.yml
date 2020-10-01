@@ -1,0 +1,23 @@
+# File: ap-template-docker-pushimage.yml
+parameters:
+- name: dockerRegistryConnection
+  type: string
+  default: 'No Docker Registry Connection'
+- name: repository
+  type: string
+  default: 'No Repository'
+- name: tagName 
+  type: string 
+  default: 'No tag'
+
+steps:
+- task: Docker@2
+  displayName: 'Push an image'
+  inputs:
+    containerRegistry: '${{ parameters.dockerRegistryConnection }}'
+    repository: '${{ parameters.repository }}'
+    command: 'push'
+    tags: |
+      ${{ parameters.tagName }}
+      latest
+    addPipelineData: false

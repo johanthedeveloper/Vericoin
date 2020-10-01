@@ -1,0 +1,40 @@
+# Docker
+# Build a Docker image 
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- master
+
+resources:
+- repo: self
+
+variables:
+  tag: '$(Build.BuildId)'
+
+stages:
+- stage: Build
+  displayName: Jobs
+  jobs:  
+  - job: Build
+    displayName: Agent job (ARM)
+    timeoutInMinutes: 60
+    cancelTimeoutInMinutes: 60
+    
+    pool:
+      name: WorkerPool
+      demands: Agent.OSArchitecture -equals ARM
+
+    steps:
+    - template: ap-template-docker-buildimage.yml
+      parameters:
+        dockerRegistryConnection: 'dockerhub_johanthedeveloper'
+        dockerFile: '**/dockerfile'
+        repository: 'johanthedeveloper/vericoin-dev' 
+        tagName: '$(Build.BuildNumber)' 
+        
+    - template: ap-template-docker-pushimage.yml
+      parameters:
+        dockerRegistryConnection: 'dockerhub_johanthedeveloper'
+        repository: 'johanthedeveloper/vericoin-dev' 
+        tagName: '$(Build.BuildNumber)' 
+        

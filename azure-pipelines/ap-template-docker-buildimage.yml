@@ -1,0 +1,28 @@
+# File: ap-template-docker-buildimage.yml
+parameters:
+- name: dockerRegistryConnection
+  type: string
+  default: 'No Docker Registry Connection'
+- name: repository
+  type: string
+  default: 'No Repository'
+- name: dockerFile
+  type: string
+  default: 'No Docker File'
+- name: tagName 
+  type: string 
+  default: 'No tag'
+
+steps:
+- task: Docker@2
+  displayName: 'Build an image'
+  inputs:
+    containerRegistry: '${{ parameters.dockerRegistryConnection }}'
+    repository: '${{ parameters.repository }}'
+    command: 'build'
+    Dockerfile: '${{ parameters.dockerFile }}'
+    tags: |
+      ${{ parameters.tagName }}
+      latest
+    arguments: '--no-cache'
+    addPipelineData: false
