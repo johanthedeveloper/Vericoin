@@ -17,8 +17,8 @@ stages:
   jobs:  
   - job: Build
     displayName: Agent job (ARM)
-    timeoutInMinutes: 60
-    cancelTimeoutInMinutes: 60
+    timeoutInMinutes: 240
+    cancelTimeoutInMinutes: 240
     
     pool:
       name: WorkerPool
