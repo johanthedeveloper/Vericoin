@@ -21,7 +21,7 @@ FROM base AS build
 # Git Clone
 #RUN git clone -v https://github.com/vericoin/vericoin.git /root/git/vericoin/
 #RUN git clone -v https://github.com/VeriConomy/vericoin /root/git/vericoin/
-RUN git clone https://github.com/VeriConomy/vericoin.git /root/vericoin
+RUN git clone https://github.com/VeriConomy/vericoin.git /root/git/vericoin
 
 #Set new work directory for building vericoin
 WORKDIR /root/git/vericoin/
