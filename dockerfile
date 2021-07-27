@@ -1,7 +1,8 @@
 FROM ubuntu:20.04 AS base
 
 # Install needed software
-RUN apt update -y && apt upgrade -y
+#RUN apt update -y && apt upgrade -y
+RUN apt update -y
 RUN apt-get install -y git build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils python3 libcurl4-openssl-dev libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev libminizip-dev zlib1g-dev libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler libqrencode-dev wget
 #RUN apt-get install -y nano git unzip zip wget 
 #RUN apt-get install -y build-essential libboost-all-dev libssl1.0-dev libdb++-dev 
