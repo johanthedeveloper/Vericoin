@@ -42,8 +42,8 @@ ENV BDB_PREFIX="/root/git/vericoin/db4"
 RUN ./autogen.sh
 RUN ./configure BDB_LIBS="-L${BDB_PREFIX}/lib -ldb_cxx-4.8" BDB_CFLAGS="-I${BDB_PREFIX}/include"
 RUN make
-RUN cp src/vericoind /app/publish
-RUN cp src/vericoin-cli /app/publish
+RUN cp /root/git/vericoin/src/vericoind /app/publish
+RUN cp /root/git/vericoin/src/vericoin-cli /app/publish
 
 ##############################################
 ### Starting new container for publish
