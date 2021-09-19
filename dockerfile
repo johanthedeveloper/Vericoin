@@ -29,7 +29,7 @@ WORKDIR /root/vericoin
 #RUN rm makefile.unix
 #COPY ["code/makefile.unix", "."]
 #RUN make -f makefile.unix
-#RUN mkdir -p /app/publish
+RUN mkdir -p /app/publish
 
 RUN ./contrib/install_db4.sh /root/vericoin
 RUN export BDB_PREFIX="/root/vericoin/db4"
