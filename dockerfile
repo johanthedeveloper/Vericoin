@@ -33,10 +33,11 @@ WORKDIR /root/vericoin
 
 RUN ./contrib/install_db4.sh /root/vericoin
 RUN export BDB_PREFIX="/root/vericoin/db4"
-ENV BDB_PREFIX="${HOME}/vericoin/db4"
-RUN ./autogen.sh
-RUN ./configure BDB_LIBS="-L${BDB_PREFIX}/lib -ldb_cxx-4.8" BDB_CFLAGS="-I${BDB_PREFIX}/include"
-RUN make
+ENV BDB_PREFIX="/root/vericoin/db4"
+RUN export BDB_PREFIX="${HOME}/vericoin/db4" && ./autogen.sh && ./configure BDB_LIBS="-L${BDB_PREFIX}/lib -ldb_cxx-4.8" BDB_CFLAGS="-I${BDB_PREFIX}/include" && make
+#RUN ./autogen.sh
+#RUN ./configure BDB_LIBS="-L${BDB_PREFIX}/lib -ldb_cxx-4.8" BDB_CFLAGS="-I${BDB_PREFIX}/include"
+#RUN make
 #RUN cp /root/git/vericoin/src/vericoind /app/publish
 #RUN cp /root/git/vericoin/src/vericoin-cli /app/publish
 #RUN cp /root/git/vericoin/src/vericoin-tx /app/publish
