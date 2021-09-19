@@ -16,10 +16,10 @@ RUN find ./vericoin/ -type f -iname "*.sh" -exec chmod +x {} \;
 FROM base AS build
 
 # Git Clone
-RUN git clone https://github.com/VeriConomy/vericoin.git ~/vericoin
+RUN git clone https://github.com/VeriConomy/vericoin.git /root/vericoin
 
 #Set new work directory for building vericoin
-WORKDIR ~/vericoin
+WORKDIR /root/vericoin
 
 # Build vericoin
 #RUN echo "$PWD" && cd /root/git/vericoin/src/ && echo "$PWD"
@@ -31,8 +31,8 @@ WORKDIR ~/vericoin
 #RUN make -f makefile.unix
 #RUN mkdir -p /app/publish
 
-RUN ./contrib/install_db4.sh ~/vericoin
-RUN export BDB_PREFIX="/root/git/vericoin/db4"
+RUN ./contrib/install_db4.sh /root/vericoin
+RUN export BDB_PREFIX="/root/vericoin/db4"
 ENV BDB_PREFIX="${HOME}/vericoin/db4"
 RUN ./autogen.sh
 RUN ./configure BDB_LIBS="-L${BDB_PREFIX}/lib -ldb_cxx-4.8" BDB_CFLAGS="-I${BDB_PREFIX}/include"
