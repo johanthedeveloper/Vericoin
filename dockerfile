@@ -42,7 +42,7 @@ RUN export BDB_PREFIX="${HOME}/vericoin/db4" && ./autogen.sh && ./configure BDB_
 #RUN cp /root/git/vericoin/src/vericoin-cli /app/publish
 #RUN cp /root/git/vericoin/src/vericoin-tx /app/publish
 #RUN cp /root/git/vericoin/src/vericoin-wallet /app/publish
-RUN cp -a /root/git/vericoin/src/. /app/publish/
+RUN cp -a /root/vericoin/src/. /app/publish/
 
 ##############################################
 ### Starting new container for publish
