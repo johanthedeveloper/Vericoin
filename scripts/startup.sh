@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #setup bootstrap
-printf "Checking bootstrap\n";
-/usr/libexec/vericoin/bootstrap.sh
+#printf "Checking bootstrap\n";
+#/usr/libexec/vericoin/bootstrap.sh
 
 #setup config file
 printf "Checking configuration file\n";
